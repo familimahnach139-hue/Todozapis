@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>NOVA Алия — Правила использования и FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg: #050816;
+            --bg-alt: #0b1020;
+            --accent: #7b5cff;
+            --accent-soft: rgba(123, 92, 255, 0.25);
+            --text: #f5f5ff;
+            --muted: #a5a7c7;
+            --danger: #ff4b81;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+            --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+            --blur: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #1b1f4a 0, #050816 55%, #02030a 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 32px 16px 64px;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+            gap: 32px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 840px) {
+            header {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 0 0, #ff4b81 0, transparent 55%),
+                radial-gradient(circle at 100% 100%, #7b5cff 0, transparent 55%),
+                rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: conic-gradient(from 180deg, #ff4b81, #7b5cff, #4be1ff, #ff4b81);
+            box-shadow: 0 0 12px rgba(123, 92, 255, 0.9);
+        }
+
+        h1 {
+            font-size: clamp(32px, 4vw, 40px);
+            letter-spacing: 0.03em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 460px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            margin-top: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta span::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #7b5cff, #4be1ff);
+            box-shadow: 0 0 10px rgba(75, 225, 255, 0.7);
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 26px;
+            padding: 18px;
+            background:
+                radial-gradient(circle at 0 0, rgba(255, 75, 129, 0.35) 0, transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(75, 225, 255, 0.35) 0, transparent 55%),
+                rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0, rgba(255, 255, 255, 0.06), transparent 60%);
+            mix-blend-mode: screen;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: radial-gradient(circle at 50% 0, #1b1f4a 0, #050816 55%);
+            min-height: 220px;
+            display: flex;
+            align-items: stretch;
+            justify-content: stretch;
+        }
+
+        .hero-image::after {
+            content: "NOVA";
+            position: absolute;
+            right: 18px;
+            top: 16px;
+            font-size: 18px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 18px rgba(123, 92, 255, 0.9);
+        }
+
+        /* сюда можно поставить фон-картинку */
+        .hero-image-inner {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            width: 100%;
+            overflow: hidden;
+            filter: saturate(1.2);
+        }
+
+        .hero-image-inner img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 220px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+            gap: 28px;
+        }
+
+        @media (max-width: 960px) {
+            main {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(11, 16, 32, 0.96), rgba(7, 10, 24, 0.98));
+            border-radius: var(--radius-lg);
+            padding: 22px 20px 20px;
+            border: var(--border-glass);
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(var(--blur));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background:
+                radial-gradient(circle at 0 0, rgba(123, 92, 255, 0.12) 0, transparent 55%),
+                radial-gradient(circle at 100% 100%, rgba(75, 225, 255, 0.12) 0, transparent 55%);
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        .card-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--muted);
+            background: rgba(5, 8, 22, 0.7);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .pill {
+            font-size: 11px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+        }
+
+        .rules-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .rules-item {
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .rules-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #7b5cff, #4be1ff);
+            box-shadow: 0 0 10px rgba(75, 225, 255, 0.7);
+        }
+
+        .rules-item strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .note {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--muted);
+            border-radius: var(--radius-md);
+            padding: 10px 11px;
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+        }
+
+        .note span {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        details {
+            border-radius: var(--radius-md);
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 11px;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        details[open] {
+            border-color: var(--accent);
+            background: radial-gradient(circle at 0 0, rgba(123, 92, 255, 0.18), rgba(5, 8, 22, 0.96));
+        }
+
+        summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .summary-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-label span {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+        }
+
+        .summary-icon {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+
+        details[open] .summary-icon {
+            transform: rotate(90deg);
+        }
+
+        details p {
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        .faq-footer {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .faq-footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .faq-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: radial-gradient(circle, #4be1ff 0, #7b5cff 60%);
+            box-shadow: 0 0 12px rgba(75, 225, 255, 0.9);
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        footer {
+            margin-top: 32px;
+            font-size: 11px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 14px;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .danger {
+            color: var(--danger);
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div>
+                <div class="logo-badge">
+                    <span class="logo-dot"></span>
+                    <span>Nova Creative Studio · Terms & FAQ</span>
+                </div>
+                <h1>Правила использования бота Алия и FAQ</h1>
+                <p class="subtitle">
+                    Алия — это цифровой помощник, созданный для моральной поддержки и помощи в решении повседневных
+                    задач. Чтобы общение с ним было безопасным, полезным и комфортным для всех пользователей,
+                    пожалуйста, соблюдайте следующие правила.
+
+                </p>
+                <div class="hero-meta">
+
+                    <span>Последнее обновление: 10.04.2026</span>
+
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-card-inner">
+                    <div class="hero-image">
+                        <div class="hero-image-inner"> <img src="/photo_2026-04-10_20-45-44.jpg" alt="">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- ПРАВИЛА ИСПОЛЬЗОВАНИЯ -->
+            <section class="card">
+                <div class="card-inner">
+                    <div class="card-header">
+                        <h2 class="card-title">Правила использования</h2>
+                        <span class="card-tag">Terms of Use</span>
+                    </div>
+
+
+
+                    <ul class="rules-list">
+                        <li class="rules-item">
+                            <strong>Использование Алии строго запрещено для следующих целей:
+
+
+
+                        </li>
+                        <li class="rules-item">
+                            <strong>1. Мошенничество и нарушение приватности: «пробив» личных данных, поиск паролей, создание фишинговых сообщений, попытки взлома, кибербуллинг, сталкинг или причинение вреда другим людям.
+
+
+
+                        </li>
+                        <li class="rules-item">
+                            <strong>2. Деструктивное общение: оскорбления, угрозы, распространение ненависти, дискриминационных идей, призывов к насилию, а также спам и попытки вывести систему из строя.
+
+
+
+                        </li>
+                        
+                    <div class="note">
+                        <span>Важно:</span> если вы используете Алию в образовательных или коммерческих целях,
+                        убедитесь,
+                        что ваши запросы использования соответствуют локальному законодательству и внутренним политикам
+                        вашей организации.
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="card">
+                <div class="card-inner">
+                    <div class="card-header">
+                        <h2 class="card-title">FAQ — Частые вопросы</h2>
+                        <span class="card-tag">Help Center</span>
+                    </div>
+
+                    <div class="faq-list">
+                        <details>
+                            <summary>
+                                <div class="summary-label">
+                                    <span>Общее</span>
+                                    ▎Что может Алия?
+                                </div>
+                                <span class="summary-icon">›</span>
+                            </summary>
+                            <p>
+                                1. Оказать эмоциональную поддержку: Выслушать, проявить эмпатию и помочь вам разобраться
+                                в своих чувствах в сложной ситуации.
+
+                                2. Помочь с анализом и идеями: Обсудить с вами ситуацию, помочь рассмотреть её с разных
+                                сторон и предложить возможные варианты действий.
+
+                                3. Упростить рутину: Помочь с текстами (составить, отредактировать, перефразировать),
+                                планированием или поиском общедоступной информации.
+
+                                4. Поддерживать диалог на вашем языке: Автоматически определять язык вашего сообщения и
+                                вести весь разговор на нём.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>
+                                <div class="summary-label">
+                                    <span>Общее</span>
+                                    Что Алия не может?
+                                </div>
+                                <span class="summary-icon">›</span>
+                            </summary>
+                            <p>
+                                1. Заменить специалиста. Алия не является психотерапевтом, врачом, юристом или
+                                финансовым консультантом. В кризисных ситуациях (суицидальные мысли, острые приступы
+                                паники) и для получения экспертного заключения необходимо обращаться к профильным
+                                специалистам.
+
+                                2. Гарантировать абсолютную точность. Несмотря на стремление давать корректные ответы,
+                                Алия может ошибаться. Любую критически важную информацию (особенно касающуюся здоровья,
+                                финансов и права) необходимо перепроверять по авторитетным источникам.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>
+                                <div class="summary-label">
+                                    <span>Помощь</span>
+                                    Как правильно общаться с Алией?
+                                </div>
+                                <span class="summary-icon">›</span>
+                            </summary>
+                            <p>
+                                • Будьте конкретны. Чем точнее вы опишете запрос или проблему, тем полезнее и точнее
+                                будет ответ.
+
+                                • Уточняйте. Если что-то осталось непонятным, не стесняйтесь задавать дополнительные
+                                вопросы.
+
+                                • Помните об ответственности. Советы Алии — это инструмент для размышления, но
+                                окончательные решения и их последствия остаются за вами.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>
+                                <div class="summary-label">
+                                    <span>Нарушения</span>
+                                    Что будет, за нарушение правил бота?
+                                </div>
+                                <span class="summary-icon">›</span>
+                            </summary>
+                            <p>
+                               • При первом нарушении пользователь получает предупреждение. Повторные или серьёзные нарушения ведут к ограничению доступа или блокировке аккаунта.
+
+• При выявлении признаков подготовки серьёзных противоправных действий информация передаётся в службу поддержки Telegram.
+
+- Начните диалог с простого «Привет, Алия» или сразу расскажите, что вас беспокоит. Взаимное уважение — основа нашего безопасного общения.
+                            </p>
+                        </details>
+
+                        <details>
+                            <summary>
+                               
+
+                    <div class="faq-footer">
+                        <div>
+                            <span class="status-dot"></span>
+                            Поддержка онлайн в рабочее время.
+                        </div>
+                        <div>
+                            Остались вопросы? Напишите нам: <a href="https://t.me/TheMidnightVoid">@TheMidnightVoid</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div>2026 NOVA Creative Studio</div>
+            
+        </footer>
+    </div>
+</body>
+
+</html>
+
+
